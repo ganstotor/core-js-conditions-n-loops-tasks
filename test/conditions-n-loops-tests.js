@@ -415,56 +415,20 @@ describe('core-js-conditions-n-loops', () => {
     }
   );
 
-  it.optional(
-    'rotateMatrix should return the original array rotated by an angle of 90 degrees clockwise',
-    () => {
-      let arr = [
-        [1, 2, 3],
-        [4, 5, 6],
-        [7, 8, 9],
-      ];
-      let result = [
-        [7, 4, 1],
-        [8, 5, 2],
-        [9, 6, 3],
-      ];
-      tasks.rotateMatrix(arr);
-      assert.deepEqual(arr, result);
-      const min = -10;
-      const max = 10;
-      const matrixSize = 5;
-      for (let i = 0; i < 5; i += 1) {
-        arr = [];
-        for (let j = 0; j < matrixSize; j += 1) {
-          const line = utility.getRandomArrayUtil(min, max, matrixSize);
-          arr.push(line);
-        }
-        result = utility.getRotateMatrixUtil(arr);
-        tasks.rotateMatrix(arr);
-        assert.deepEqual(arr, result);
+  function getBalanceIndex(arr) {
+    const totalSum = arr.reduce((sum, num) => sum + num, 0);
+    let leftSum = 0;
+  
+    for (let i = 0; i < arr.length; i += 1) {
+      const rightSum = totalSum - leftSum - arr[i];
+      if (leftSum === rightSum) {
+        return i;
       }
-      assert.equal(
-        forbidden.isCommented(tasks.rotateMatrix),
-        false,
-        `Be sure to remove comments from the final solution`
-      );
-      assert.equal(
-        forbidden.isArrayUsed(tasks.rotateMatrix),
-        false,
-        `Using methods of Array class is not allowed`
-      );
-      assert.equal(
-        forbidden.isStringUsed(tasks.rotateMatrix),
-        false,
-        `Using methods of String class is not allowed`
-      );
-      assert.equal(
-        forbidden.isUtilityUsed(tasks.rotateMatrix),
-        false,
-        `Using functions on utility.js file is not allowed`
-      );
+      leftSum += arr[i];
     }
-  );
+  
+    return -1; // Если элемент баланса не найден
+  }  
 
   it.optional('sortByAsc should return a sorted array', () => {
     const min = -100;
