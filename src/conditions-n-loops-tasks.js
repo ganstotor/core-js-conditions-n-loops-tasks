@@ -435,31 +435,31 @@ function rotateMatrix(matrix) {
  *  [2, 9, 5, 9]    => [2, 5, 9, 9]
  *  [-2, 9, 5, -3]  => [-3, -2, 5, 9]
  */
-// function sortByAsc(arr) {
-//   const n = arr.length;
-//   const sortedArr = [...arr];
+function sortByAsc(arr) {
+  const n = arr.length;
+  const sortedArr = [...arr];
 
-//   for (let i = 0; i < n - 1; i += 1) {
-//     let minIndex = i;
+  for (let i = 0; i < n - 1; i += 1) {
+    let minIndex = i;
 
-//     for (let j = i + 1; j < n; j += 1) {
-//       if (sortedArr[j] < sortedArr[minIndex]) {
-//         minIndex = j;
-//       }
-//     }
+    for (let j = i + 1; j < n; j += 1) {
+      if (sortedArr[j] < sortedArr[minIndex]) {
+        minIndex = j;
+      }
+    }
 
-//     if (minIndex !== i) {
-//       const temp = sortedArr[i];
-//       sortedArr[i] = sortedArr[minIndex];
-//       sortedArr[minIndex] = temp;
-//     }
-//   }
+    if (minIndex !== i) {
+      const temp = sortedArr[i];
+      sortedArr[i] = sortedArr[minIndex];
+      sortedArr[minIndex] = temp;
+    }
+  }
 
-//   return sortedArr;
-// }
-function sortByAsc(/* arr */) {
-  throw new Error('Not implemented');
+  return sortedArr;
 }
+// function sortByAsc(/* arr */) {
+//   throw new Error('Not implemented');
+// }
 
 /**
  * Shuffles characters in a string so that the characters with an odd index are moved to the end of the string at each iteration.
@@ -498,7 +498,9 @@ function shuffleChar(str, iterations) {
 
   return result;
 }
-
+// function shuffleChar(/* str, iterations */) {
+//   throw new Error('Not implemented');
+// }
 /**
  * Returns the nearest largest integer consisting of the digits of the given positive integer.
  * If there is no such number, it returns the original number.
