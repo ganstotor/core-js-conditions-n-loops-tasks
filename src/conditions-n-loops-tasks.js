@@ -447,9 +447,6 @@ function sortByAsc(arr) {
   }
   return numArray;
 }
-// function sortByAsc(/* arr */) {
-//   throw new Error('Not implemented');
-// }
 
 /**
  * Shuffles characters in a string so that the characters with an odd index are moved to the end of the string at each iteration.
@@ -470,27 +467,31 @@ function sortByAsc(arr) {
  */
 function shuffleChar(str, iterations) {
   let result = str;
+  let diminishIterations = iterations;
 
-  for (let i = 0; i < iterations; i += 1) {
-    let evenChars = '';
-    let oddChars = '';
+  while (diminishIterations > 0) {
+    let resultStr = '';
+    let finalArray = '';
 
-    for (let j = 0; j < result.length; j += 1) {
-      if (j % 2 === 0) {
-        evenChars += result[j];
+    for (let i = 0; i < result.length; i += 1) {
+      if (i % 2 !== 0) {
+        finalArray += result[i];
       } else {
-        oddChars += result[j];
+        resultStr += result[i];
       }
     }
 
-    result = evenChars + oddChars;
+    result = resultStr + finalArray;
+    diminishIterations -= 1;
+
+    if (result === str) {
+      diminishIterations = iterations % (iterations - diminishIterations);
+    }
   }
 
   return result;
 }
-// function shuffleChar(/* str, iterations */) {
-//   throw new Error('Not implemented');
-// }
+
 /**
  * Returns the nearest largest integer consisting of the digits of the given positive integer.
  * If there is no such number, it returns the original number.
